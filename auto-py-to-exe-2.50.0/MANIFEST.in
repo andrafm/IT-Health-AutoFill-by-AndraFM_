@@ -1,4 +1,0 @@
-include README.md
-include LICENSE
-graft auto_py_to_exe/web
-prune examples

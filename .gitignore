@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+.venv_small/
+venv/
+
+# Build artifacts
+build/
+build_fresh/
+dist/
+dist_fresh/
+*.spec.bak
+
+# Installer artifacts
+installer_stage/
+*.log
+
+# Local archives / temporary moved files
+bisa di pindahkan/
+
+# VS Code workspace file
+*.code-workspace

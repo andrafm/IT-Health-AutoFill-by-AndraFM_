@@ -1,8 +1,8 @@
 @echo off
 setlocal EnableExtensions
 
-cd /d D:\PYTHON || (
-  echo Folder D:\PYTHON tidak ditemukan.
+cd /d "%~dp0" || (
+  echo Folder project tidak ditemukan.
   pause
   exit /b 1
 )
@@ -34,7 +34,7 @@ echo TKDIR=%TKDIR%
 echo [3/4] Bersihkan build lama...
 rmdir /s /q build 2>nul
 rmdir /s /q dist 2>nul
-del /q "IT Health Auto Fill Form.spec" 2>nul
+del /q "IT Health AutoFill.spec" 2>nul
 
 echo [4/4] Build aplikasi...
 py -m PyInstaller ^
@@ -42,7 +42,7 @@ py -m PyInstaller ^
   --clean ^
   --windowed ^
   --onedir ^
-  --name "IT Health Auto Fill Form" ^
+  --name "IT Health AutoFill" ^
   --hidden-import=tkinter ^
   --collect-all customtkinter ^
   --collect-all tkcalendar ^
@@ -50,16 +50,16 @@ py -m PyInstaller ^
   --collect-all certifi ^
   --add-data "%TCLDIR%;_tcl_data" ^
   --add-data "%TKDIR%;_tk_data" ^
-  teslagi.py
+  main.py
 
 if errorlevel 1 goto :fail
 
-if not exist "dist\IT Health Auto Fill Form\_internal\_tcl_data" (
+if not exist "dist\IT Health AutoFill\_internal\_tcl_data" (
   echo ERROR: folder _tcl_data tidak ditemukan.
   goto :fail
 )
 
-if not exist "dist\IT Health Auto Fill Form\_internal\_tk_data" (
+if not exist "dist\IT Health AutoFill\_internal\_tk_data" (
   echo ERROR: folder _tk_data tidak ditemukan.
   goto :fail
 )
@@ -67,7 +67,7 @@ if not exist "dist\IT Health Auto Fill Form\_internal\_tk_data" (
 echo.
 echo Build selesai.
 echo Copy SELURUH folder ini ke device lain:
-echo D:\PYTHON\dist\IT Health Auto Fill Form
+echo %CD%\dist\IT Health AutoFill
 echo.
 echo Jangan copy .exe saja.
 echo Jangan jalankan dari ZIP atau flashdisk.

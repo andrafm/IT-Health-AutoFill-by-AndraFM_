@@ -1,14 +1,14 @@
 @echo off
 setlocal EnableExtensions
 
-cd /d D:\PYTHON || (
-  echo Folder D:\PYTHON tidak ditemukan.
+cd /d "%~dp0" || (
+  echo Folder project tidak ditemukan.
   pause
   exit /b 1
 )
 
 set "VENV_DIR=.venv_small"
-set "APP_NAME=IT Health Auto Fill Form"
+set "APP_NAME=IT Health AutoFill"
 set "UPX_DIR=C:\upx"
 
 echo [1/5] Menyiapkan virtual environment ringan...
@@ -80,7 +80,7 @@ if exist "%UPX_DIR%\upx.exe" (
     --exclude-module test ^
     --add-data "%TCLDIR%;_tcl_data" ^
     --add-data "%TKDIR%;_tk_data" ^
-    teslagi.py
+    main.py
 ) else (
   echo UPX tidak ditemukan. Build tetap jalan tanpa kompresi tambahan.
   python -m PyInstaller ^
@@ -111,7 +111,7 @@ if exist "%UPX_DIR%\upx.exe" (
     --exclude-module test ^
     --add-data "%TCLDIR%;_tcl_data" ^
     --add-data "%TKDIR%;_tk_data" ^
-    teslagi.py
+    main.py
 )
 
 if errorlevel 1 goto :fail
@@ -124,7 +124,7 @@ if not exist "dist\%APP_NAME%\_internal\_tk_data" goto :fail
 echo.
 echo Build selesai.
 echo Ambil seluruh folder ini:
-echo D:\PYTHON\dist\%APP_NAME%
+echo %CD%\dist\%APP_NAME%
 echo.
 echo Catatan:
 echo - Jangan copy .exe saja

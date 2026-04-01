@@ -1,27 +1,31 @@
 @echo off
-cd /d D:\PYTHON
+setlocal EnableExtensions
+cd /d "%~dp0"
 
 py -m pip install -U pip
 py -m pip install -U pyinstaller customtkinter tkcalendar requests babel certifi
 
 rmdir /s /q build 2>nul
 rmdir /s /q dist 2>nul
-del /q "IT Health Auto Fill Form.spec" 2>nul
+del /q "IT Health AutoFill.spec" 2>nul
 
 py -m PyInstaller ^
   --noconfirm ^
   --clean ^
   --windowed ^
   --onedir ^
-  --name "IT Health Auto Fill Form" ^
+  --icon "icon.ico" ^
+  --name "IT Health AutoFill" ^
+  --add-data "icon.ico;." ^
+  --add-data "app.ico;." ^
   --collect-all customtkinter ^
   --collect-all tkcalendar ^
   --collect-all babel ^
   --collect-all certifi ^
-  teslagi.py
+  main.py
 
 echo.
 echo Build selesai.
 echo Ambil seluruh folder ini:
-echo D:\PYTHON\dist\IT Health Auto Fill Form
+echo %CD%\dist\IT Health AutoFill
 pause
