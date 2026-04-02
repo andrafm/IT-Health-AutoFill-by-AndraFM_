@@ -17,9 +17,15 @@ dist_fresh/
 # Installer artifacts
 installer_stage/
 *.log
+setup.exe
+Setup-*.exe
 
 # Local archives / temporary moved files
 bisa di pindahkan/
+
+# VS Code files
+.vscode/*
+!.vscode/settings.json
 
 # VS Code workspace file
 *.code-workspace
