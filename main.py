@@ -9,6 +9,12 @@ from forms.toko_form import TokoForm
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
+try:
+    ctk.deactivate_automatic_dpi_awareness()
+except Exception:
+    pass
+ctk.set_widget_scaling(1.0)
+ctk.set_window_scaling(1.0)
 
 FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfrOo8V2nhoo1MNd8UZj19e8Sa9etfYWbMNSzHRXtiYx3dn4g/formResponse"
 
@@ -24,8 +30,7 @@ class ITHealthApp(ctk.CTk):
         super().__init__()
         self.title("IT Health AutoFill")
         self.configure(fg_color="#0f1720")
-        self.geometry("420x760")
-        self.minsize(390, 680)
+        self._apply_scaled_window(390, 680)
 
         self.accent = "#3b82f6"
         self.card = "#111214"
@@ -37,6 +42,11 @@ class ITHealthApp(ctk.CTk):
         self._apply_window_icon(self)
 
         self._build_login()
+
+    def _apply_scaled_window(self, min_width, min_height):
+        self.minsize(min_width, min_height)
+        # Make initial size exactly follow minsize for consistent startup size.
+        self.geometry(f"{min_width}x{min_height}")
 
     def _resolve_icon_path(self):
         base_dir = Path(__file__).resolve().parent
@@ -100,8 +110,7 @@ class ITHealthApp(ctk.CTk):
 
     def _build_login(self):
         self._clear_window()
-        self.geometry("400x280")
-        self.minsize(400, 280)
+        self._apply_scaled_window(400, 280)
         self.resizable(False, False)
         self._center_window_on_screen()
 
@@ -125,8 +134,7 @@ class ITHealthApp(ctk.CTk):
 
     def show_toko_form(self):
         self._clear_window()
-        self.geometry("350x700")
-        self.minsize(350, 700)
+        self._apply_scaled_window(350, 700)
         self.resizable(True, True)
         self._center_window_on_screen()
 
@@ -146,8 +154,7 @@ class ITHealthApp(ctk.CTk):
 
     def show_office_form(self):
         self._clear_window()
-        self.geometry("350x600")
-        self.minsize(350, 600)
+        self._apply_scaled_window(350, 600)
         self.resizable(True, True)
         self._center_window_on_screen()
 
@@ -220,8 +227,10 @@ class ITHealthApp(ctk.CTk):
         ).pack(pady=(0, 16))
 
         dialog.update_idletasks()
-        width = max(360, dialog.winfo_reqwidth())
-        height = max(180, dialog.winfo_reqheight())
+        min_dialog_w = 360
+        min_dialog_h = 180
+        width = max(min_dialog_w, dialog.winfo_reqwidth())
+        height = max(min_dialog_h, dialog.winfo_reqheight())
         self._center_dialog_over_parent(dialog, width, height)
 
         self.wait_window(dialog)

@@ -41,7 +41,8 @@ set "APP_NAME=$AppName"
 set "DEST=%LocalAppData%\Programs\%APP_NAME%"
 set "SRC=%~dp0"
 
-if not exist "%DEST%" mkdir "%DEST%"
+if exist "%DEST%" rmdir /s /q "%DEST%"
+mkdir "%DEST%"
 
 if not exist "%SRC%payload.zip" (
     echo payload.zip tidak ditemukan.
