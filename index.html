@@ -3,122 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Health AutoFill</title>
+  <title>IT Health AutoFill - AndraFM</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body {
-      background: radial-gradient(circle at top, #0f172a, #020617);
-    }
-
-    .glass {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(148, 163, 184, 0.15);
-    }
-
     .glow {
-      box-shadow: 0 0 25px rgba(59,130,246,0.5);
-    }
-
-    .neon-text {
-      text-shadow: 0 0 10px rgba(59,130,246,0.6);
+      box-shadow: 0 0 25px rgba(59,130,246,0.4);
     }
   </style>
 </head>
 
-<body class="text-white">
+<body class="bg-slate-950 text-white">
 
-<div class="max-w-6xl mx-auto px-4 py-6">
+<!-- HERO -->
+<section class="relative overflow-hidden py-14">
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-slate-900 to-black opacity-90"></div>
 
-  <!-- TOP BAR -->
-  <div class="flex items-center justify-between mb-6 glass p-3 rounded-xl">
+  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
 
-    <h1 class="text-lg font-semibold neon-text">
-      IT Health <span class="text-blue-400">AutoFill</span>
-    </h1>
+    <div>
+      <span class="bg-blue-600 text-xs px-2 py-1 rounded">v1.1.0</span>
 
-    <!-- BIG DOWNLOAD BUTTON -->
-    <a href="https://github.com/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/download/v1.1/Setup-IT-Health-AutoFill-1.1.0.exe"
-       class="bg-blue-600 px-6 py-2 rounded-xl font-semibold glow hover:bg-blue-500 transition">
-      ⬇ DOWNLOAD APP
-    </a>
+      <h1 class="text-3xl md:text-4xl font-bold mt-3">
+        IT Health <span class="text-blue-400">AutoFill</span>
+      </h1>
 
-  </div>
+      <p class="text-gray-300 mt-2 text-sm">
+        Input IT Health lebih cepat & otomatis ke Google Form.
+      </p>
 
-  <!-- MAIN GRID -->
-  <div class="grid md:grid-cols-3 gap-4">
+      <a href="https://github.com/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/download/v1.1/Setup-IT-Health-AutoFill-1.1.0.exe"
+         class="inline-block mt-5 bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl text-sm font-semibold glow">
+        ⬇ Download
+      </a>
 
-    <!-- LEFT INFO -->
-    <div class="space-y-4">
-
-      <div class="glass p-4 rounded-xl">
-        <h2 class="text-sm font-semibold mb-2">Info</h2>
-        <p class="text-xs text-gray-300">
-          Input IT Health otomatis ke Google Form lebih cepat & efisien.
-        </p>
-
-        <div class="flex gap-3 mt-3 text-[11px] text-gray-400">
-          <span>⚡ Cepat</span>
-          <span>☁ Auto</span>
-          <span>🔒 Aman</span>
-        </div>
+      <div class="flex gap-4 mt-4 text-xs text-gray-400">
+        <span>⚡ Cepat</span>
+        <span>☁ Auto</span>
+        <span>🔒 Aman</span>
       </div>
-
-      <div class="glass p-4 rounded-xl">
-        <h2 class="text-sm font-semibold mb-2">Install</h2>
-        <ol class="text-xs text-gray-300 space-y-1">
-          <li>1. Download .exe</li>
-          <li>2. Run as Admin</li>
-          <li>3. Install</li>
-          <li>4. Buka aplikasi</li>
-        </ol>
-      </div>
-
-      <div class="glass p-4 rounded-xl">
-        <h2 class="text-sm font-semibold mb-2">Penggunaan</h2>
-        <ol class="text-xs text-gray-300 space-y-1">
-          <li>1. Login</li>
-          <li>2. Pilih Form</li>
-          <li>3. Isi data</li>
-          <li>4. Submit</li>
-        </ol>
-      </div>
-
     </div>
 
-    <!-- RIGHT PREVIEW -->
-    <div class="md:col-span-2 grid grid-cols-1 gap-4">
-
-      <!-- LOGIN -->
-      <div class="glass p-3 rounded-xl hover:scale-[1.02] transition">
-        <p class="text-xs text-gray-400 mb-2">Login</p>
-        <img src="login.png" class="rounded-lg border border-slate-700">
-      </div>
-
-      <!-- TOKO -->
-      <div class="glass p-3 rounded-xl hover:scale-[1.02] transition">
-        <p class="text-xs text-gray-400 mb-2">Form Toko</p>
-        <img src="toko.png" class="rounded-lg border border-slate-700">
-      </div>
-
-      <!-- OFFICE -->
-      <div class="glass p-3 rounded-xl hover:scale-[1.02] transition">
-        <p class="text-xs text-gray-400 mb-2">Form Office</p>
-        <img src="office.png" class="rounded-lg border border-slate-700">
-      </div>
-
+    <div>
+      <img src="login.png" class="rounded-xl border border-slate-700">
     </div>
 
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <div class="text-center text-[11px] text-gray-500 mt-6">
-    © 2026 AndraFM • IT Health AutoFill
+<!-- PREVIEW -->
+<section class="py-12 px-6 bg-slate-900">
+  <div class="max-w-6xl mx-auto">
+
+    <h2 class="text-xl font-semibold mb-6 text-center">Preview</h2>
+
+    <div class="grid md:grid-cols-3 gap-4">
+
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="login.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Login</p>
+      </div>
+
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="toko.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Form Toko</p>
+      </div>
+
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="office.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Form Office</p>
+      </div>
+
+    </div>
   </div>
+</section>
 
-</div>
+<!-- INSTALL & USE -->
+<section class="py-12 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+
+    <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+      <h3 class="text-sm font-semibold mb-3">🧠 Install</h3>
+      <ol class="space-y-1 text-xs text-gray-300">
+        <li>1. Download .exe</li>
+        <li>2. Run as Administrator</li>
+        <li>3. Install</li>
+        <li>4. Buka aplikasi</li>
+      </ol>
+    </div>
+
+    <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+      <h3 class="text-sm font-semibold mb-3">⚙️ Penggunaan</h3>
+      <ol class="space-y-1 text-xs text-gray-300">
+        <li>1. Jalankan aplikasi</li>
+        <li>2. Login</li>
+        <li>3. Pilih Toko / Office</li>
+        <li>4. Isi data</li>
+        <li>5. Submit</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-10 px-6 bg-slate-900">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid md:grid-cols-4 gap-4 text-center text-xs">
+
+      <div class="bg-slate-800 p-3 rounded-lg">⚡ Cepat</div>
+      <div class="bg-slate-800 p-3 rounded-lg">☁ Auto</div>
+      <div class="bg-slate-800 p-3 rounded-lg">🧩 2 Form</div>
+      <div class="bg-slate-800 p-3 rounded-lg">🔒 Stabil</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-4 text-gray-500 text-xs">
+  © 2026 AndraFM
+</footer>
 
 </body>
 </html>
