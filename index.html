@@ -8,7 +8,7 @@
 
   <style>
     .glow {
-      box-shadow: 0 0 40px rgba(59,130,246,0.4);
+      box-shadow: 0 0 25px rgba(59,130,246,0.4);
     }
   </style>
 </head>
@@ -16,108 +16,90 @@
 <body class="bg-slate-950 text-white">
 
 <!-- HERO -->
-<section class="relative overflow-hidden">
+<section class="relative overflow-hidden py-14">
   <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-slate-900 to-black opacity-90"></div>
 
-  <div class="relative max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
 
-    <!-- LEFT -->
     <div>
-      <span class="bg-blue-600 text-xs px-3 py-1 rounded-full">v1.1.0</span>
+      <span class="bg-blue-600 text-xs px-2 py-1 rounded">v1.1.0</span>
 
-      <h1 class="text-4xl md:text-5xl font-bold mt-4 leading-tight">
+      <h1 class="text-3xl md:text-4xl font-bold mt-3">
         IT Health <span class="text-blue-400">AutoFill</span>
       </h1>
 
-      <p class="text-gray-300 mt-4">
-        Input IT Health jadi lebih cepat, otomatis, dan tanpa ribet. Data langsung terkirim ke Google Form hanya dengan sekali klik.
+      <p class="text-gray-300 mt-2 text-sm">
+        Input IT Health lebih cepat & otomatis ke Google Form.
       </p>
 
-      <!-- BUTTON -->
       <a href="https://github.com/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/download/v1.1/Setup-IT-Health-AutoFill-1.1.0.exe"
-         class="inline-block mt-8 bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-2xl text-lg font-semibold glow transition">
-        ⬇ Download Sekarang
+         class="inline-block mt-5 bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl text-sm font-semibold glow">
+        ⬇ Download
       </a>
 
-      <p class="text-sm text-gray-400 mt-3">Setup v1.1.0 • Windows</p>
-
-      <!-- FEATURES -->
-      <div class="flex gap-6 mt-6 text-sm text-gray-300">
-        <div>⚡ Cepat</div>
-        <div>☁ Auto Submit</div>
-        <div>🔒 Aman</div>
+      <div class="flex gap-4 mt-4 text-xs text-gray-400">
+        <span>⚡ Cepat</span>
+        <span>☁ Auto</span>
+        <span>🔒 Aman</span>
       </div>
     </div>
 
-    <!-- RIGHT (MAIN PREVIEW) -->
-    <div class="relative">
-      <img src="login.png" class="rounded-2xl shadow-2xl border border-slate-700">
+    <div>
+      <img src="login.png" class="rounded-xl border border-slate-700">
     </div>
 
   </div>
 </section>
 
-<!-- PREVIEW SECTION -->
-<section class="py-20 px-6 bg-slate-900">
-  <div class="max-w-6xl mx-auto text-center">
+<!-- PREVIEW -->
+<section class="py-12 px-6 bg-slate-900">
+  <div class="max-w-6xl mx-auto">
 
-    <h2 class="text-3xl font-bold mb-4">Preview Aplikasi</h2>
-    <p class="text-gray-400 mb-12">Tampilan sederhana, fokus ke kecepatan & kemudahan</p>
+    <h2 class="text-xl font-semibold mb-6 text-center">Preview</h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-4">
 
-      <!-- LOGIN -->
-      <div class="bg-slate-800 p-5 rounded-2xl hover:scale-105 transition">
-        <img src="login.png" class="rounded-xl mb-4">
-        <h3 class="font-semibold">Login User</h3>
-        <p class="text-sm text-gray-400">Akses aplikasi dengan akun user</p>
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="login.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Login</p>
       </div>
 
-      <!-- TOKO -->
-      <div class="bg-slate-800 p-5 rounded-2xl hover:scale-105 transition">
-        <img src="toko.png" class="rounded-xl mb-4">
-        <h3 class="font-semibold">Form Toko</h3>
-        <p class="text-sm text-gray-400">Input data untuk cabang toko</p>
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="toko.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Form Toko</p>
       </div>
 
-      <!-- OFFICE -->
-      <div class="bg-slate-800 p-5 rounded-2xl hover:scale-105 transition">
-        <img src="office.png" class="rounded-xl mb-4">
-        <h3 class="font-semibold">Form Office</h3>
-        <p class="text-sm text-gray-400">Input data untuk kantor pusat</p>
+      <div class="bg-slate-800 p-3 rounded-lg">
+        <img src="office.png" class="rounded mb-2">
+        <p class="text-xs text-center text-gray-400">Form Office</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- INSTALL & USAGE -->
-<section class="py-20 px-6">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+<!-- INSTALL & USE -->
+<section class="py-12 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
 
-    <!-- INSTALL -->
-    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-      <h3 class="text-xl font-bold mb-5">🧠 Cara Install</h3>
-
-      <ol class="space-y-3 text-gray-300">
-        <li>1. Download file .exe</li>
-        <li>2. Klik kanan → Run as Administrator</li>
-        <li>3. Ikuti proses install sampai selesai</li>
-        <li>4. Buka aplikasi dari Desktop / Start Menu</li>
+    <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+      <h3 class="text-sm font-semibold mb-3">🧠 Install</h3>
+      <ol class="space-y-1 text-xs text-gray-300">
+        <li>1. Download .exe</li>
+        <li>2. Run as Administrator</li>
+        <li>3. Install</li>
+        <li>4. Buka aplikasi</li>
       </ol>
     </div>
 
-    <!-- USAGE -->
-    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-      <h3 class="text-xl font-bold mb-5">⚙️ Cara Penggunaan</h3>
-
-      <ol class="space-y-3 text-gray-300">
+    <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+      <h3 class="text-sm font-semibold mb-3">⚙️ Penggunaan</h3>
+      <ol class="space-y-1 text-xs text-gray-300">
         <li>1. Jalankan aplikasi</li>
-        <li>2. Login user</li>
-        <li>3. Pilih Form Toko / Office</li>
-        <li>4. Isi data yang diperlukan</li>
-        <li>5. Klik tombol Submit</li>
-        <li>6. Data otomatis terkirim ke Google Form</li>
+        <li>2. Login</li>
+        <li>3. Pilih Toko / Office</li>
+        <li>4. Isi data</li>
+        <li>5. Submit</li>
       </ol>
     </div>
 
@@ -125,36 +107,23 @@
 </section>
 
 <!-- FEATURES -->
-<section class="py-16 px-6 bg-slate-900">
-  <div class="max-w-6xl mx-auto text-center">
+<section class="py-10 px-6 bg-slate-900">
+  <div class="max-w-6xl mx-auto">
 
-    <h2 class="text-2xl font-bold mb-10">Fitur Unggulan</h2>
+    <div class="grid md:grid-cols-4 gap-4 text-center text-xs">
 
-    <div class="grid md:grid-cols-4 gap-6">
-
-      <div class="bg-slate-800 p-4 rounded-xl">
-        ⚡<br>Input Cepat
-      </div>
-
-      <div class="bg-slate-800 p-4 rounded-xl">
-        ☁<br>Auto Submit
-      </div>
-
-      <div class="bg-slate-800 p-4 rounded-xl">
-        🧩<br>Form Toko & Office
-      </div>
-
-      <div class="bg-slate-800 p-4 rounded-xl">
-        🔒<br>Aman & Stabil
-      </div>
+      <div class="bg-slate-800 p-3 rounded-lg">⚡ Cepat</div>
+      <div class="bg-slate-800 p-3 rounded-lg">☁ Auto</div>
+      <div class="bg-slate-800 p-3 rounded-lg">🧩 2 Form</div>
+      <div class="bg-slate-800 p-3 rounded-lg">🔒 Stabil</div>
 
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="text-center py-8 text-gray-500 text-sm">
-  © 2026 AndraFM • IT Health AutoFill
+<footer class="text-center py-4 text-gray-500 text-xs">
+  © 2026 AndraFM
 </footer>
 
 </body>
