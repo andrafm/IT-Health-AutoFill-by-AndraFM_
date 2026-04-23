@@ -33,12 +33,12 @@
       </p>
 
      <!-- BUTTON -->
-      <a href="https://github.com/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/download/v1.1/Setup-IT-Health-AutoFill-1.1.0.exe"
+      <a href="https://github.com/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/latest/download/Setup-IT-Health-AutoFill.exe"
          class="inline-block mt-8 bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-2xl text-lg font-semibold glow transition">
         ⬇ Download Sekarang
       </a>
 
-      <p class="text-sm text-gray-400 mt-3">Setup v1.1.0 • Windows</p>
+      <p id="versionText" class="text-sm text-gray-400 mt-3">Loading version...</p>
 
       <div class="flex gap-4 mt-4 text-xs text-gray-400">
         <span>⚡ Cepat</span>
@@ -128,6 +128,20 @@
 <footer class="text-center py-4 text-gray-500 text-xs">
   © 2026 AndraFM
 </footer>
+<script>
+fetch("https://api.github.com/repos/andrafm/IT-Health-AutoFill-by-AndraFM_/releases/latest")
+.then(res => res.json())
+.then(data => {
+  const version = data.tag_name;
 
+  // update text versi
+  document.getElementById("versionText").innerText = 
+    "Setup " + version + " • Windows";
+
+}).catch(() => {
+  document.getElementById("versionText").innerText = 
+    "Setup • Windows";
+});
+</script>
 </body>
 </html>
