@@ -29,3 +29,18 @@ bisa di pindahkan/
 
 # VS Code workspace file
 *.code-workspace
+
+# Python
+__pycache__/
+*.pyc
+
+# Build
+dist/
+build/
+*.spec
+
+# Installer
+setup.exe
+
+# PyInstaller temp
+*.log

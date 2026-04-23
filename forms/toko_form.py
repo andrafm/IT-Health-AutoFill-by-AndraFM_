@@ -197,48 +197,119 @@ class TokoForm(ctk.CTkFrame):
         ).pack(side="left")
 
     def _collect_payload(self):
-        tgl = self.selected_date
-        catatan = self.catatan_text.get("1.0", "end").strip()
+        try:
+            tgl = self.selected_date
+            catatan = self.catatan_text.get("1.0", "end").strip() or "-"
+            metode = self.metode_var.get() or ""
 
-        return {
-            "entry.283427473_day": tgl.day,
-            "entry.283427473_month": tgl.month,
-            "entry.283427473_year": tgl.year,
-            "entry.385266849": "SBY",
-            "entry.1885250742": self.target_value,
-            "entry.1590388624": self.entry_kode.get().strip(),
-            "entry.502122490": self.metode_var.get(),
-            "entry.1426045077": self.pc_var.get(),
-            "entry.792011826": self.keyboard_var.get(),
-            "entry.654245313": self.mouse_var.get(),
-            "entry.1199810138": self.monitor_var.get(),
-            "entry.1648101535": self.printer_var.get(),
-            "entry.447675297": self.ups_var.get(),
-            "entry.277276485": catatan,
-            "entry.1602601477": "Ya",
-            "entry.1435005536": "Ya",
-            "entry.263709496": "Ya",
-            "entry.1181879015": "Ya",
-            "entry.1843770921": "Ya",
-            "entry.2069737290": "Ya",
-            "entry.204296501": "Ya",
-            "entry.1130533675": "Ya",
-            "entry.1714876202": "Ya",
-            "entry.1947646856": "Ya",
-            "entry.2095211759": "Ya",
-            "entry.118622321": "Ya",
-            "entry.1645981144": "Ya",
-            "entry.102152864": "Ya",
-            "entry.1522634640": "Ya",
-            "entry.1785081968": "Ya",
-            "entry.923069771": "Ya",
-            "entry.1983326232": "Ya",
-            "entry.323979629": "Ya",
-            "entry.1936393138": "Ya",
-            "entry.806371825": "Ya",
-            "pageHistory": "0,1,2,5",
-            "fbzx": "-9125506300963112535",
-        }
+            kode_toko = self.entry_kode.get().strip()
+            if not kode_toko:
+                raise ValueError("Kode toko kosong")
+
+            # =========================
+            # KONFIG BERDASARKAN METODE
+            # =========================
+            config_map = {
+                "Remote": {
+                    "device": {
+                        "entry.1426045077": self.pc_var.get(),
+                        "entry.792011826": self.keyboard_var.get(),
+                        "entry.654245313": self.mouse_var.get(),
+                        "entry.1199810138": self.monitor_var.get(),
+                        "entry.1648101535": self.printer_var.get(),
+                        "entry.447675297": self.ups_var.get(),
+                        "entry.277276485": catatan,
+                    },
+                    "system": {
+                        "pageHistory": "0,1,2,5",
+                        "fbzx": "-9125506300963112535",
+                    },
+                },
+                "Visit": {
+                    "device": {
+                        "entry.981774926": self.pc_var.get(),
+                        "entry.1151741751": self.keyboard_var.get(),
+                        "entry.1337605474": self.mouse_var.get(),
+                        "entry.1214075269": self.monitor_var.get(),
+                        "entry.905084259": self.printer_var.get(),
+                        "entry.746063779": self.ups_var.get(),
+                        "entry.482344634": catatan,
+                    },
+                    "system": {
+                        "pageHistory": "0,1,3,5",
+                        "fbzx": "-2147404623473306568",
+                    },
+                },
+            }
+
+            # =========================
+            # DETEKSI METODE
+            # =========================
+            selected_key = None
+            for key in config_map:
+                if key.lower() in metode.lower():
+                    selected_key = key
+                    break
+
+            if not selected_key:
+                raise ValueError(f"Metode tidak dikenali: {metode}")
+
+            selected_config = config_map[selected_key]
+
+            device_entries = selected_config["device"]
+            system_entries = selected_config["system"]
+
+            # =========================
+            # PAYLOAD UTAMA
+            # =========================
+            payload = {
+                "entry.283427473_day": tgl.day,
+                "entry.283427473_month": tgl.month,
+                "entry.283427473_year": tgl.year,
+
+                "entry.385266849": "SBY",
+                "entry.1885250742": self.target_value,
+                "entry.1590388624": kode_toko,
+                "entry.502122490": metode,
+
+                **device_entries,
+                **system_entries,
+
+                "entry.1602601477": "Ya",
+                "entry.1435005536": "Ya",
+                "entry.263709496": "Ya",
+                "entry.1181879015": "Ya",
+                "entry.1843770921": "Ya",
+                "entry.2069737290": "Ya",
+                "entry.204296501": "Ya",
+                "entry.1130533675": "Ya",
+                "entry.1714876202": "Ya",
+                "entry.1947646856": "Ya",
+                "entry.2095211759": "Ya",
+                "entry.118622321": "Ya",
+                "entry.1645981144": "Ya",
+                "entry.102152864": "Ya",
+                "entry.1522634640": "Ya",
+                "entry.1785081968": "Ya",
+                "entry.923069771": "Ya",
+                "entry.1983326232": "Ya",
+                "entry.323979629": "Ya",
+                "entry.1936393138": "Ya",
+                "entry.806371825": "Ya",
+            }
+
+            # =========================
+            # VALIDASI FINAL
+            # =========================
+            for key, value in payload.items():
+                if value is None:
+                    payload[key] = ""
+
+            return payload
+
+        except Exception as e:
+            self.show_error("Error Payload", str(e))
+            return None
 
     def preview(self):
         text = self._build_preview_text()
@@ -367,19 +438,34 @@ class TokoForm(ctk.CTkFrame):
         threading.Thread(target=self._submit_thread, daemon=True).start()
 
     def _submit_thread(self):
-        payload = self._collect_payload()
-        payload["entry.729629067"] = self.user_name
-        ok, message = self.send_form(payload)
+        try:
+            payload = self._collect_payload()
+
+            # ❌ kalau payload gagal dibuat
+            if not payload:
+                self.after(0, lambda: self.submit_btn.configure(state="normal", text="SUBMIT"))
+                return
+
+            payload["entry.729629067"] = self.user_name
+
+            ok, message = self.send_form(payload)
+
+        except Exception as e:
+            ok = False
+            message = str(e)
 
         def done():
             self.submit_btn.configure(state="normal", text="SUBMIT")
+
             if ok:
+                # ✅ TIDAK DIUBAH
                 self.status_label.configure(text="Submit sukses", text_color="#10b981")
                 self.show_success("✅ SUBMIT SUKSES", self._build_preview_text())
                 self.entry_kode.delete(0, "end")
                 self.catatan_text.delete("1.0", "end")
             else:
+                # ❌ tetap sama, cuma lebih aman
                 self.status_label.configure(text="Submit gagal", text_color="#ef4444")
-                self.show_error("Gagal", message)
+                self.show_error("Gagal", message or "Terjadi kesalahan saat submit")
 
         self.after(0, done)
